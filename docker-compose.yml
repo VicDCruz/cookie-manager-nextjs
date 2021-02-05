@@ -28,6 +28,15 @@ services:
       MYSQL_USER: strapi
       MYSQL_PASSWORD: strapi
 
+  home:
+    image: node:14.15-alpine
+    volumes:
+      - ./home:/srv/app
+    ports:
+      - 80:3000
+    working_dir: /srv/app
+    entrypoint: ["npm", "start"]
+
   blogs:
     image: node:14.15-alpine
     volumes:
