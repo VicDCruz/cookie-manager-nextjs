@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "blogs",
+  "collectionName": "photos",
   "info": {
-    "name": "Blog",
+    "name": "Photo",
     "description": ""
   },
   "options": {
@@ -11,19 +11,22 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "title": {
-      "type": "string"
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
     },
-    "description": {
+    "filename": {
       "type": "string"
-    },
-    "content": {
-      "type": "text"
     },
     "user": {
       "plugin": "users-permissions",
       "model": "user",
-      "via": "blogs"
+      "via": "photos"
     }
   }
 }

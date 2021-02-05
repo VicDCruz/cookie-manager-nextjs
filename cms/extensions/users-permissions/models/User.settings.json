@@ -59,9 +59,17 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "blog": {
-      "via": "users_permissions_user",
-      "model": "blog"
+    "blogs": {
+      "via": "user",
+      "collection": "blog"
+    },
+    "notes": {
+      "via": "user",
+      "collection": "notes"
+    },
+    "photos": {
+      "via": "user",
+      "collection": "photo"
     }
   }
 }
