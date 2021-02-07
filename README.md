@@ -15,6 +15,8 @@ How to create &amp; manage cookies for auto sign in
 
 ## Simple commands
 Using a `makefile`, there are commands to simplify larger ones
+- `init`: Start containers & network
+- `stop`: Stop & delete containers & network
 - `open_db`: Open a session for MySQL database
 
 # References
