@@ -2,7 +2,20 @@
 import React from 'react';
 import styles from '../styles/Login.module.css';
 
-const checkCredentials = () => {};
+const checkCredentials = async event => {
+  event.preventDefault();
+  const form = new FormData(event.target);
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(Object.fromEntries(form)),
+  });
+  const data = await res.json();
+  console.log(data);
+};
 
 function login() {
   return (
