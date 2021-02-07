@@ -16,3 +16,7 @@ How to create &amp; manage cookies for auto sign in
 ## Simple commands
 Using a `makefile`, there are commands to simplify larger ones
 - `open_db`: Open a session for MySQL database
+
+# References
+- [Sticky Header and Footer with Tailwind](https://dev.to/cryptic022/sticky-header-and-footer-with-tailwind-2oik)
+- [Centered Page with TailwindCss](https://www.tailwindtoolbox.com/components/centered-page)
