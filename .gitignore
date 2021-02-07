@@ -105,3 +105,5 @@ dist
 
 # MySQL files
 data/
+
+**/package-lock.json
