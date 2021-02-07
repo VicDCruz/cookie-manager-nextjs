@@ -27,6 +27,7 @@ module.exports = {
     'jsx-a11y/anchor-is-valid': 0,
     'react/require-default-props': 0,
     'react/jsx-one-expression-per-line': 0,
+    'arrow-parens': 0,
     'prettier/prettier': [
       'error',
       { singleQuote: true, parser: 'flow', arrowParens: 'avoid' },
