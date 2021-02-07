@@ -22,3 +22,4 @@ Using a `makefile`, there are commands to simplify larger ones
 # References
 - [Sticky Header and Footer with Tailwind](https://dev.to/cryptic022/sticky-header-and-footer-with-tailwind-2oik)
 - [Centered Page with TailwindCss](https://www.tailwindtoolbox.com/components/centered-page)
+- [Utilizando Fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Utilizando_Fetch)
