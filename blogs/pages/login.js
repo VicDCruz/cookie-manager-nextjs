@@ -2,6 +2,8 @@
 import React from 'react';
 import styles from '../styles/Login.module.css';
 
+const checkCredentials = () => {};
+
 function login() {
   return (
     <div className={styles.background}>
@@ -27,7 +29,7 @@ function login() {
           <p className="font-bold text-lg sm:text-3xl p-5 text-center">
             Iniciar sesión en D-Blogs
           </p>
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={checkCredentials}>
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <input
