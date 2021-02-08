@@ -38,28 +38,22 @@ services:
     entrypoint: ["npm", "start"]
 
   blogs:
-    image: node:14.15-alpine
+    build: ./blogs
     volumes:
       - ./blogs:/srv/app
     ports:
       - 3010:3000
-    working_dir: /srv/app
-    entrypoint: ["npm", "run", "dev"]
 
   notes:
-    image: node:14.15-alpine
+    build: ./notes
     volumes:
       - ./notes:/srv/app
     ports:
       - 3020:3000
-    working_dir: /srv/app
-    entrypoint: ["npm", "run", "dev"]
 
   photos:
-    image: node:14.15-alpine
+    build: ./photos
     volumes:
       - ./photos:/srv/app
     ports:
       - 3030:3000
-    working_dir: /srv/app
-    entrypoint: ["npm", "run", "dev"]
