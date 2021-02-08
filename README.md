@@ -20,7 +20,15 @@ Using a `makefile`, there are commands to simplify larger ones
 - `stop`: Stop & delete containers & network
 - `open_db`: Open a session for MySQL database
 
+# Color palette
+![Color palette](color-palette.png)
+
 # References
+- [Utilizando Fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Utilizando_Fetch)
+- [NodeJS: Making docker-compose Volumes Ignore the node_modules Directory](https://medium.com/@semur.nabiev/how-to-make-docker-compose-volumes-ignore-the-node-modules-directory-99f9ec224561)
+
+## Tailwind
 - [Sticky Header and Footer with Tailwind](https://dev.to/cryptic022/sticky-header-and-footer-with-tailwind-2oik)
 - [Centered Page with TailwindCss](https://www.tailwindtoolbox.com/components/centered-page)
-- [Utilizando Fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Utilizando_Fetch)
+- [Divided register template](https://github.com/davidgrzyb/tailwind-auth-template)
+- [Display image with Next.js & Tailwind](https://github.com/vercel/next.js/issues/19471)
