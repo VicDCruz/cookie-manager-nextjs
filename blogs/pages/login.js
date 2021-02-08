@@ -82,7 +82,7 @@ function login() {
 
               <div className="text-sm">
                 <a
-                  href="#"
+                  href="/register"
                   className="font-medium text-blue-cookie hover:text-blue-400"
                 >
                   Registrate aquí
