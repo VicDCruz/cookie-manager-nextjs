@@ -6,6 +6,7 @@ How to create &amp; manage cookies for auto sign in
 ## First steps
 - Verify you have docker and **docker-compose**
 - Exec `docker-compose pull`
+- Exec `docker-compose build`
 - Exec `docker-compose up -d`
 - Verify all ports are fine
     - 1337: Back-end (CMS - Strapi)
