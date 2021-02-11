@@ -33,3 +33,5 @@ Using a `makefile`, there are commands to simplify larger ones
 - [Centered Page with TailwindCss](https://www.tailwindtoolbox.com/components/centered-page)
 - [Divided register template](https://github.com/davidgrzyb/tailwind-auth-template)
 - [Display image with Next.js & Tailwind](https://github.com/vercel/next.js/issues/19471)
+- [Shuffle Editor - Tailwind bootstrap](https://shuffle.dev/editor)
+
