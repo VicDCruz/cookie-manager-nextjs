@@ -10,6 +10,7 @@ How to create &amp; manage cookies for auto sign in
 - Exec `docker-compose up -d`
 - Verify all ports are fine
     - 1337: Back-end (CMS - Strapi)
+    - 80: Front-end (Create React App) / Home
     - 3010: Front-end (Next.js) / Blogs
     - 3020: Front-end (Next.js) / Notes
     - 3030: Front-end (Next.js) / Photos
