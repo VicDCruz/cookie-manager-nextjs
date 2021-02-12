@@ -8,16 +8,18 @@ module.exports = {
     },
     extend: {
       colors: {
-        "blue-cookie": { DEFAULT: '#4478A6' },
-        "yellow-cookie": { DEFAULT: '#F2CD5C' },
-        "white-cookie": { DEFAULT: '#F2EEEB' },
-        "brown-cookie": { DEFAULT: '#D9967E' },
-        "red-cookie": { DEFAULT: '#F24444' },
+        'blue-cookie': { DEFAULT: '#4478A6' },
+        'yellow-cookie': { DEFAULT: '#F2CD5C' },
+        'white-cookie': { DEFAULT: '#F2EEEB' },
+        'brown-cookie': { DEFAULT: '#D9967E' },
+        'red-cookie': { DEFAULT: '#F24444' },
       },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ['disabled'],
+    },
   },
   plugins: [],
-}
+};
