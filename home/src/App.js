@@ -12,7 +12,7 @@ function App() {
       </header>
       <main className="flex-1 overflow-y-auto px-4">
         <h1 className="font-title text-6xl lg:text-9xl mb-3 text-blue-cookie">Bienvenido</h1>
-        <div className="flex flex-row text-4xl gap-2 mb-6">
+        <div className="flex flex-row text-4xl gap-2 mb-6 items-center">
           <p className="font-serif font-bold">Objetivo</p>
           <p className="font-thin">Crear cookies primarias para conocer la dinámica de auto-login y su ciclo de vida</p>
         </div>
@@ -29,7 +29,8 @@ function App() {
                   </div>
                 </div>
               </div>
-              <p>D-Photos</p>
+              <p className="mt-5">D-Photos</p>
+              <p className="text-gray-500 font-serif text-base font-light">Servicio para guardar </p>
             </a>
             <a className="flex flex-col" href={urls.NOTES_URL}>
               <div className="flex justify-center">
@@ -41,7 +42,8 @@ function App() {
                   </div>
                 </div>
               </div>
-              <p>D-Notes</p>
+              <p className="mt-5">D-Notes</p>
+              <p className="text-gray-500 font-serif text-base font-light">Servicio para guardar </p>
             </a>
             <a className="flex flex-col" href={urls.BLOGS_URL}>
               <div className="flex justify-center">
@@ -53,7 +55,8 @@ function App() {
                   </div>
                 </div>
               </div>
-              <p>D-Blogs</p>
+              <p className="mt-5">D-Blogs</p>
+              <p className="text-gray-500 font-serif text-base font-light">Servicio para guardar </p>
             </a>
           </div>
         </div>
