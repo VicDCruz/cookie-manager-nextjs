@@ -1,25 +1,38 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useRef } from 'react';
+import { useRouter } from 'next/router';
+import { Toast } from 'primereact/toast';
 import styles from '../styles/Login.module.css';
 
-const checkCredentials = async event => {
-  event.preventDefault();
-  const form = new FormData(event.target);
-  const res = await fetch('/api/login', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(Object.fromEntries(form)),
-  });
-  const data = await res.json();
-  console.log(data);
-};
-
 function login() {
+  const toast = useRef(null);
+  const router = useRouter();
+
+  const checkCredentials = async event => {
+    event.preventDefault();
+    const form = new FormData(event.target);
+    const res = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(Object.fromEntries(form)),
+    });
+    const data = await res.json();
+    if (data.error)
+      toast.current.show({
+        severity: 'error',
+        summary: 'Error',
+        detail: data.error,
+        life: 3000,
+      });
+    else router.push('/home');
+  };
+
   return (
     <div className={styles.background}>
+      <Toast ref={toast} />
       <div className="flex items-center justify-center h-screen">
         <div className="bg-white-cookie rounded-lg border shadow-lg p-10">
           <div className="flex justify-center">
@@ -43,7 +56,6 @@ function login() {
             Iniciar sesión en D-Blogs
           </p>
           <form className="space-y-6" onSubmit={checkCredentials}>
-            <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <input
                 id="email-address"
@@ -67,13 +79,13 @@ function login() {
             <div className="flex flex-col gap-1 items-start justify-between">
               <div className="flex items-center">
                 <input
-                  id="remember_me"
-                  name="remember_me"
+                  id="remember"
+                  name="remember"
                   type="checkbox"
                   className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
                 />
                 <label
-                  htmlFor="remember_me"
+                  htmlFor="remember"
                   className="ml-2 block text-sm text-gray-900"
                 >
                   Recuerda me
