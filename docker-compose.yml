@@ -42,6 +42,8 @@ services:
     volumes:
       - ./blogs:/srv/app
       - /srv/app/node_modules
+    environment:
+      - TOKEN_SECRET=Zf1Lfim1Iqjm+bqIh9Zej/EYrdu/5veH/Wjvj0CozFY
     ports:
       - 3010:3000
 
@@ -50,6 +52,8 @@ services:
     volumes:
       - ./notes:/srv/app
       - /srv/app/node_modules
+    environment:
+      - TOKEN_SECRET=eoS7bfMVm0PS4HzOQyWshfTydhymMcDxsJxU1UXpGkk
     ports:
       - 3020:3000
 
@@ -58,5 +62,7 @@ services:
     volumes:
       - ./photos:/srv/app
       - /srv/app/node_modules
+    environment:
+      - TOKEN_SECRET=clOyMYDR8kuoSzGx3a4vifJkfZysH8ZCW+V/IdaCa+s
     ports:
       - 3030:3000
