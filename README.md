@@ -32,6 +32,7 @@ Using a `makefile`, there are commands to simplify larger ones
 - [Next.js: How to get and set cookies](https://maxschmitt.me/posts/next-js-cookies/)
 - [fetch() cheatsheet](https://devhints.io/js-fetch)
 - [The Fetch API Cheatsheet: Nine of the Most Common API Requests](https://www.freecodecamp.org/news/fetch-api-cheatsheet/)
+- [Flat Illustrations, a Design Trend for 2020 and Beyond](https://medium.com/swlh/flat-illustrations-design-trend-2020-f638f6ae6406)
 
 ## Tailwind
 - [Sticky Header and Footer with Tailwind](https://dev.to/cryptic022/sticky-header-and-footer-with-tailwind-2oik)
