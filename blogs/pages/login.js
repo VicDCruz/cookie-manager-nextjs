@@ -27,7 +27,7 @@ function login() {
         detail: data.error,
         life: 3000,
       });
-    else router.push('/home');
+    else router.push('/user/home');
   };
 
   return (
