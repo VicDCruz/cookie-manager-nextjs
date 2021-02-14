@@ -24,6 +24,9 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "blogs"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }

@@ -27,6 +27,9 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "photos"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
