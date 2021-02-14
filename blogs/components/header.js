@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
+import { Menu } from 'primereact/menu';
+import { Toast } from 'primereact/toast';
+import { useRouter } from 'next/router';
 
 function Header({ url = '', username = '' }) {
+  const menu = useRef(null);
+  const toast = useRef(null);
+  const router = useRouter();
+
+  const items = [
+    {
+      label: 'Opciones',
+      items: [
+        {
+          label: 'Perfil',
+          icon: 'pi pi-user',
+          command: () => {
+            toast.current.show({
+              severity: 'success',
+              summary: 'Perfil',
+              detail: 'Vista para mostrar menú',
+              life: 3000,
+            });
+          },
+        },
+        {
+          label: 'Cerrar sesión',
+          icon: 'pi pi-sign-out',
+          command: () => router.push('/api/logout'),
+        },
+      ],
+    },
+  ];
+
   const avatar = url ? (
     <Image className="w-3 h-3 rounded-full" src={url} width="50" height="50" />
   ) : (
@@ -30,7 +62,15 @@ function Header({ url = '', username = '' }) {
             />
           </svg>
         </div>
-        {avatar}
+        <Menu model={items} popup ref={menu} id="popup_menu" />
+        <Toast ref={toast} />
+        <button
+          type="button"
+          className="focus:outline-none"
+          onClick={event => menu.current.toggle(event)}
+        >
+          {avatar}
+        </button>
       </div>
     </div>
   );
