@@ -26,6 +26,7 @@ export default async (req, res) => {
           {
             jwt: data.jwt,
             user: {
+              id: user.id,
               username: user.username,
               email: user.email,
               role: user.role,
