@@ -46,7 +46,7 @@ function Header({ url = '', username = '' }) {
     <div className="px-2 py-1 flex justify-between items-center bg-yellow-cookie">
       <div className="flex gap-1 items-center">
         <Image src="/images/logo.png" width="50" height="50" />
-        <p className="font-medium text-xl">D-Blog</p>
+        <p className="font-medium text-xl">D-Photo</p>
       </div>
       <div className="flex gap-1.5">
         <div className="h-6 w-6 self-center text-blue-cookie">

@@ -53,7 +53,7 @@ function login() {
             </div>
           </div>
           <p className="font-bold text-lg sm:text-3xl p-5 text-center">
-            Iniciar sesión en D-Blogs
+            Iniciar sesión en D-Photos
           </p>
           <form className="space-y-6" onSubmit={checkCredentials}>
             <div className="rounded-md shadow-sm -space-y-px">

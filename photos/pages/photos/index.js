@@ -4,54 +4,43 @@ import Link from 'next/link';
 import { URL_BACKEND } from '../constants';
 import Card from '../../components/card';
 
-const TRIM_LENGTH = 250;
-
 function formatDate(str) {
   const date = new Date(str);
   return date.toLocaleDateString('es-MX');
 }
 
-function trim(str = '') {
-  return str.substr(0, TRIM_LENGTH);
-}
-
-function index({ blogs }) {
+function index({ photos }) {
   return (
     <div className="flex flex-col h-screen">
-      <p className="text-6xl bg-black text-white px-3 py-5">Blogs</p>
-      <div className="w-screen flex flex-col items-center mt-3">
-        <div className="w-3/4">
-          {blogs.map(blog => (
-            <div key={blog.id} className="mb-7">
-              <Link href={`/blogs/${blog.slug}`}>
-                <a>
-                  <Card
-                    title={blog.title}
-                    description={blog.description}
-                    createdAt={formatDate(blog.created_at)}
-                    content={`${trim(blog.content)}${
-                      blog.content.length > TRIM_LENGTH ? '...' : ''
-                    }`}
-                  />
-                </a>
-              </Link>
-            </div>
-          ))}
-        </div>
+      <p className="text-6xl bg-black text-white px-3 py-5">Photos</p>
+      <div className="grid grid-cols-3 items-center mt-5 mx-6 gap-3">
+        {photos.map(photo => (
+          <div key={photo.id} className="mb-7">
+            <Link href={`/photos/${photo.slug}`}>
+              <a>
+                <Card
+                  filename={photo.filename}
+                  url={`http://localhost:1337${photo.image.formats.small.url}`}
+                  createdAt={formatDate(photo.created_at)}
+                />
+              </a>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
 index.propTypes = {
-  blogs: PropTypes.array,
+  photos: PropTypes.array,
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`${URL_BACKEND}/blogs`);
-  const blogs = await res.json();
+  const res = await fetch(`${URL_BACKEND}/photos`);
+  const photos = await res.json();
 
-  return { props: { blogs } };
+  return { props: { photos } };
 }
 
 export default index;

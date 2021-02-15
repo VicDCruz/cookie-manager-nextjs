@@ -7,18 +7,12 @@ import Header from '../../components/header';
 import { getLoginSession } from '../../lib/auth';
 import Custom403 from '../403';
 
-const TRIM_LENGTH = 250;
-
 function formatDate(str) {
   const date = new Date(str);
   return date.toLocaleDateString('es-MX');
 }
 
-function trim(str = '') {
-  return str.substr(0, TRIM_LENGTH);
-}
-
-export default function home({ user, blogs }) {
+export default function home({ user, photos }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -30,25 +24,20 @@ export default function home({ user, blogs }) {
   return (
     <div className="flex flex-col h-screen">
       <Header url={user.url || ''} username={user.username} />
-      <div className="w-screen flex flex-col items-center mt-5">
-        <div className="w-3/5">
-          {blogs.map(blog => (
-            <div key={blog.id} className="mb-7">
-              <Link href={`/blogs/${blog.slug}`}>
-                <a>
-                  <Card
-                    title={blog.title}
-                    description={blog.description}
-                    createdAt={formatDate(blog.created_at)}
-                    content={`${trim(blog.content)}${
-                      blog.content.length > TRIM_LENGTH ? '...' : ''
-                    }`}
-                  />
-                </a>
-              </Link>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-3 items-center mt-5 mx-6 gap-3">
+        {photos.map(photo => (
+          <div key={photo.id} className="mb-7">
+            <Link href={`/photos/${photo.slug}`}>
+              <a>
+                <Card
+                  filename={photo.filename}
+                  url={`http://localhost:1337${photo.image.formats.small.url}`}
+                  createdAt={formatDate(photo.created_at)}
+                />
+              </a>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -56,14 +45,14 @@ export default function home({ user, blogs }) {
 
 export async function getServerSideProps(context) {
   const token = await getLoginSession(context.req, context.res);
-  let blogs = [];
+  let photos = [];
   if (token) {
-    const res = await fetch(`${URL_BACKEND}/blogs?user=${token.user.id}`, {
+    const res = await fetch(`${URL_BACKEND}/photos?user=${token.user.id}`, {
       headers: {
         Authorization: `Bearer ${token.jwt}`,
       },
     });
-    blogs = await res.json();
+    photos = await res.json();
   }
-  return { props: { ...(token || {}), blogs } };
+  return { props: { ...(token || {}), photos } };
 }
