@@ -10,7 +10,7 @@ services:
       DATABASE_USERNAME: strapi
       DATABASE_PASSWORD: strapi
       DATABASE_SSL: 'false'
-      SENDGRID_API_KEY: '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'
+      SENDGRID_API_KEY: ''
     volumes:
       - ./cms:/srv/app
     ports:
