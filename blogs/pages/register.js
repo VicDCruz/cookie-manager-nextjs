@@ -1,19 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Password } from 'primereact/password';
 import { InputText } from 'primereact/inputtext';
 import { Message } from 'primereact/message';
 import { Divider } from 'primereact/divider';
+import { Toast } from 'primereact/toast';
 
 export default function register() {
   const [password, setPassword] = useState('');
-  const [disabled, setDisabled] = useState(true);
+  const [disabledStrong, setDisabledStrong] = useState(true);
+  const [disabledEqual, setDisabledEqual] = useState(false);
 
-  const handleSubmit = event => {
+  const toast = useRef(null);
+
+  const handleSubmit = async event => {
     event.preventDefault();
-    if (!disabled) {
+    if (!disabledStrong && !disabledEqual) {
       const form = new FormData(event.target);
-      console.log(Object.fromEntries(form));
+      const data = Object.fromEntries(form);
+      delete data.confirm_password;
+      await fetch('http://localhost:1337/auth/local/register', {
+        method: 'post',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(async response => {
+          if (response.status === 200)
+            toast.current.show({
+              severity: 'info',
+              summary: 'Confirma tu correo electrónico',
+              detail:
+                'Te enviamos un correo para que confirmes tu nueva cuenta',
+              life: 3000,
+            });
+          else {
+            const error = await response.json();
+            toast.current.show({
+              severity: 'warn',
+              summary: 'Verifica tus datos',
+              detail: error.message[0].messages[0].message,
+              life: 3000,
+            });
+          }
+        })
+        .catch(() =>
+          toast.current.show({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Error inesperado',
+            life: 3000,
+          })
+        );
     }
   };
 
@@ -32,7 +72,7 @@ export default function register() {
 
   return (
     <div className="w-full flex flex-wrap h-screen">
-      <div className="w-full md:w-1/2 flex flex-col justify-center p-28">
+      <div className="w-full md:w-1/2 flex flex-col justify-center px-2">
         <div className="flex justify-center">
           <div className="h-7 w-7 text-blue-cookie">
             <svg
@@ -52,15 +92,15 @@ export default function register() {
         </div>
         <div className="text-center">
           <h1 className="font-bold text-2xl">Registrate con tu cuenta</h1>
-          <div className="py-8">
+          <div className="pt-8">
             <div className="w-full max-w-sm mx-auto">
               <form className="p-input-filled" onSubmit={handleSubmit}>
                 <div className="mb-6 p-fluid">
                   <InputText
                     required
-                    id="name"
-                    name="name"
-                    placeholder="Nombre"
+                    id="username"
+                    name="username"
+                    placeholder="Nombre de usuario"
                   />
                 </div>
                 <div className="mb-6 p-fluid">
@@ -72,7 +112,7 @@ export default function register() {
                     placeholder="Correo electrónico"
                   />
                 </div>
-                <div className="mb-16 p-fluid">
+                <div className="mb-6 p-fluid">
                   {/* <input
                     className={buttonStyle}
                     type="password"
@@ -88,7 +128,7 @@ export default function register() {
                     placeholder="Contraseña"
                     onChange={e => {
                       setPassword(e.target.value);
-                      setDisabled(
+                      setDisabledStrong(
                         !e.target.value.match(
                           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/
                         )
@@ -100,10 +140,28 @@ export default function register() {
                     strongLabel="Fuerte"
                     footer={footer}
                   />
-                  {disabled && (
+                  {disabledStrong && (
                     <Message
                       severity="error"
                       text="La contraseña debe ser fuerte"
+                    />
+                  )}
+                </div>
+                <div className="mb-16 p-fluid">
+                  <Password
+                    required
+                    id="confirm_password"
+                    name="confirm_password"
+                    placeholder="Confirma contraseña"
+                    onChange={e =>
+                      setDisabledEqual(e.target.value !== password)
+                    }
+                    feedback={false}
+                  />
+                  {disabledEqual && (
+                    <Message
+                      severity="error"
+                      text="Las contraseñas deben ser idénticas"
                     />
                   )}
                 </div>
@@ -114,6 +172,7 @@ export default function register() {
                   >
                     Registrate
                   </button>
+                  <Toast ref={toast} />
                 </div>
               </form>
             </div>

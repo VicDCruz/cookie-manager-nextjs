@@ -10,6 +10,7 @@ services:
       DATABASE_USERNAME: strapi
       DATABASE_PASSWORD: strapi
       DATABASE_SSL: 'false'
+      SENDGRID_API_KEY: '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'
     volumes:
       - ./cms:/srv/app
     ports:
@@ -53,7 +54,8 @@ services:
       - ./notes:/srv/app
       - /srv/app/node_modules
     environment:
-      - TOKEN_SECRET=eoS7bfMVm0PS4HzOQyWshfTydhymMcDxsJxU1UXpGkk
+      # - TOKEN_SECRET=eoS7bfMVm0PS4HzOQyWshfTydhymMcDxsJxU1UXpGkk
+      - TOKEN_SECRET=Zf1Lfim1Iqjm+bqIh9Zej/EYrdu/5veH/Wjvj0CozFY
     ports:
       - 3020:3000
 
@@ -63,6 +65,7 @@ services:
       - ./photos:/srv/app
       - /srv/app/node_modules
     environment:
-      - TOKEN_SECRET=clOyMYDR8kuoSzGx3a4vifJkfZysH8ZCW+V/IdaCa+s
+      # - TOKEN_SECRET=clOyMYDR8kuoSzGx3a4vifJkfZysH8ZCW+V/IdaCa+s
+      - TOKEN_SECRET=Zf1Lfim1Iqjm+bqIh9Zej/EYrdu/5veH/Wjvj0CozFY
     ports:
       - 3030:3000
